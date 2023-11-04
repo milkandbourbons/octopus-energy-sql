@@ -9,8 +9,8 @@ import _config
 today =                  datetime.now()
 today_date_string =      today.strftime("%Y-%m-%dT00:00:00")
 
-start_cheap = timedelta(hours=int(_config.cheap_rate_start_time[0:2]), minutes=int(_config.cheap_rate_start_time[3:5])) #change these values if the cheap rate starts at a different time
-end_cheap = timedelta(hours=int(_config.cheap_rate_stop_time[0:2]), minutes=int(_config.cheap_rate_stop_time[3:5])) #change these values if the cheap rate starts at a different time
+start_cheap = timedelta(hours=int(_config.cheap_rate_start_time[0:2]), minutes=int(_config.cheap_rate_start_time[3:5]))
+end_cheap = timedelta(hours=int(_config.cheap_rate_stop_time[0:2]), minutes=int(_config.cheap_rate_stop_time[3:5]))
 
 #urls
 intelligent_go_url =       f"{_config.base_url}/products/{_config.product_code}/"
