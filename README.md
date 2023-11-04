@@ -1,4 +1,11 @@
 # octopus-energy-sql
-Grabs data from the Octopus Energy Public API, a UK energy supplier 
+Grabs data from the Octopus Energy Public API, a UK energy supplier and puts it into an SQL Table
 
-Add your data to the _config.py file. A better readme is coming soon.
+## Creating the SQL Table
+
+'''sql
+CREATE DATABASE octopus;
+'''
+
+
+
