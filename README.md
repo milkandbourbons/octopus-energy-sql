@@ -38,5 +38,5 @@ CREATE TABLE electricity (
 ```
 ## Grafana JSON
 This is the JSON that I'm using for my graphs
-[JSON File for Import()
+[JSON File for Import](https://github.com/milkandbourbons/octopus-energy-sql/blob/main/grafana_graphs.json)
 
