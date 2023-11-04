@@ -16,7 +16,7 @@ This means that I make no guarantees on the security, viability or suitability o
 That being said, I'm making some assumptions of your preparation and this readme is in no way a complete guide in how to get all this off of the ground.
 
 ## Octopus Information
-Your API KEY is found here on [Octopus' Website](https://octopus.energy/dashboard/new/accounts/personal-details/api-access)
+Your API KEY is found here on [Octopus' Website](https://octopus.energy/dashboard/new/accounts/personal-details/api-access).
 Your Octopus Account number is a code like A-ABCD1234
 When figuring out your product and tariff codes, remember that they _are different_ and when you summon your account details first with:
 https://api.octopus.energy/v1/products/GO-VAR-BB-23-02-07/ (if you're on octopus GO)
