@@ -4,7 +4,8 @@ Grabs data from the Octopus Energy Public API, a UK energy supplier and puts it 
 From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) to make pretty graphs. I will also include the config JSON for Grafana and provided all the table names and columns match the below, then yours will look like mine as a baseline for you to edit.
 
 ## Getting started
-Inspiration for the project was found reading [Octopus' Blog](https://octopus.energy/blog/agile-smart-home-diy/)
+Inspiration for the project was found reading [Octopus' Blog](https://octopus.energy/blog/agile-smart-home-diy/).
+
 Most of this was enabled by this fantastic [handy API guide](https://www.guylipman.com/octopus/api_guide.html) by Guy Lipman.
 There you will find concise information on how the finer nuances of the API works, issues with BST vs GMT times and lots of other useful information. 
 As well as where to find all the account information the _config.py file needs to make it work for your unique details.
