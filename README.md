@@ -4,7 +4,7 @@
 Grabs data from the Octopus Energy Public API, a UK energy supplier and puts it into an SQL Table.
 From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) to make pretty graphs. I will also include the config JSON for Grafana and provided all the table names and columns match the below, then yours will look like mine as a baseline for you to edit.
 ![Screenshot](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/8a6b2d5a-6664-4598-822f-0c480d8c6121)
-<sup>some data is missing from the screen shot on the previous month becuase I only joined Octopus in october 2023></sup>
+<sup>some data is missing from the screen shot on the previous month becuase I only joined Octopus in october 2023</sup>
 ## Getting started
 Inspiration for the project was found reading [Octopus' Blog](https://octopus.energy/blog/agile-smart-home-diy/).
 
