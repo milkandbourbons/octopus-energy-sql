@@ -51,6 +51,7 @@ CREATE TABLE electricity (
     cost float,
     rate TEXT,
     car_charge_cost float NULL,
+    bump_charge_cost float NULL,
     summer_time tinyint(1).
     
     PRIMARY KEY (id)
