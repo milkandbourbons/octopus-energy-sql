@@ -7,7 +7,7 @@ From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-gra
 Inspiration for the project was found reading [Octopus' Blog](https://octopus.energy/blog/agile-smart-home-diy/).
 
 ### 3rd Party Software used:
-As well as a place to run the Python script (Raspberry Pi or Home Server or "Linode" are popular options, you will also need access to these free bits of software:
+As well as a place to run the Python script (Raspberry Pi or Home Server or "Linode" are popular options), you will also need access to these free bits of software:
 - Basic webserver for accessing the below
 - SQL Server / Database. My usecase is [phpmyadmin](https://www.phpmyadmin.net/) which is a lighweight and simple to use PHP based front end for interracting with your database
 - [Grafana](https://grafana.com/grafana/). This uses a data connection to the SQL Database and draws pretty graphs in a webpage which can be accessed locally or globally. 
