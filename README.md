@@ -35,7 +35,7 @@ You can use, again, Guy Lipman's [web tool for requesting your account data](htt
 Paste the output on the page into a code prettifier like [this one](https://jsonbeautifier.org/) to make it a little more human readable.
 
 # Creating the SQL Table
-###Step 1
+### Step 1
 First navigate to [http://x.x.x.x/phpmyadmin/index.php?route=/server/databases&server=1](http://x.x.x.x/phpmyadmin/index.php?route=/server/databases&server=1)
 and under "Create Database", type "octopus" and click "create".
 
@@ -48,9 +48,10 @@ And create a table called "electricity" with 14 columns
 ### Step 3
 Create the columns with the exact column names as shown, or if you're feeling a little more advanced, use the sql syntax below.
 ![Screenshot 2023-11-07 133315](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/9a8fc1aa-9233-47df-be29-270aff1cb881)
->Hint, to enable "auto increment" on the id column, its the tickbox labelled "A_I", as you hover over it, a tooltip is displayed confirming "AutoIncrement"
+>Hint:
+>to enable "auto increment" on the id column, its the tickbox labelled "A_I", as you hover over it, a tooltip is displayed confirming "AutoIncrement"
 
-### Step Advanced 1(quicker, less prone to mitstakes)
+### Step Advanced 1 <sub>(quicker, less prone to mitstakes)</sub>
 At [http://x.x.x.x/phpmyadmin/index.php?route=/server/sql](http://x.x.x.x/phpmyadmin/index.php?route=/server/sql)
 Enter:
 ``` sql
