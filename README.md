@@ -1,7 +1,7 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 # octopus-energy-sql
-***This is under heavy development. ***
+***This is under heavy development.***
 
 Grabs data from the Octopus Energy Public API, a UK energy supplier buit for EV's, and puts it into an SQL Table.
 From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) to make pretty graphs. I will also include the config JSON for Grafana and provided all the table names and columns match the below, then yours will look like mine as a baseline for you to edit.
