@@ -1,7 +1,8 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 # octopus-energy-sql
-Grabs data from the Octopus Energy Public API, a UK energy supplier and puts it into an SQL Table.
+***This is under heavy development***
+Grabs data from the Octopus Energy Public API, a UK energy supplier buit for EV's, and puts it into an SQL Table.
 From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) to make pretty graphs. I will also include the config JSON for Grafana and provided all the table names and columns match the below, then yours will look like mine as a baseline for you to edit.
 ![Screenshot 2023-11-07 110212](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/0f17c430-3cb8-4cbe-92a3-f225267fe566)
 <sup>some data is missing from the screen shot on the previous month becuase I only joined Octopus in october 2023</sup>
@@ -63,23 +64,37 @@ CREATE DATABASE octopus;
 ```
 ### Step Advanced 2
 At [http://x.x.x.x/phpmyadmin/index.php?route=/server/sql&db=octopus](http://x.x.x.x/phpmyadmin/index.php?route=/server/sql&db=octopus)
-Enter:
+To create the electricity storage table, enter:
 ``` sql
 CREATE TABLE electricity (
     id int NOT NULL AUTO_INCREMENT,
-    kwh float,
-    high_price float,
-    low_price float,
+    kwh float NULL,
+    high_price float NULL,
+    low_price float NULL,
     current_price float NULL,
-    standing_charge float,
-    start_time datetime,
-    end_time datetime,
-    cost float,
-    rate TEXT,
+    standing_charge float NULL,
+    start_time datetime NULL,
+    end_time datetime NULL,
+    cost float NULL,
+    rate TEXT NULL,
     car_charge_cost float NULL,
     bump_charge_cost float NULL,
     threshold float NULL,
-    summer_time tinyint(1).
+    summer_time tinyint(1) NULL.
+    
+    PRIMARY KEY (id)
+);
+```
+### Step Advanced 3
+At [http://x.x.x.x/phpmyadmin/index.php?route=/server/sql&db=octopus](http://x.x.x.x/phpmyadmin/index.php?route=/server/sql&db=octopus)
+To create the gas storage table, enter:
+``` sql
+CREATE TABLE gas (
+    id int NOT NULL AUTO_INCREMENT,
+    gas_kwh float NULL,
+    start_time datetime NULL,
+    standing_charge float NULL,
+    cost float NULL,
     
     PRIMARY KEY (id)
 );
