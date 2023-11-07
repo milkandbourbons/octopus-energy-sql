@@ -24,7 +24,7 @@ Octopus Energy also have their own API documentation [found here](https://develo
 This means that I make no guarantees on the security, viability or suitability of the code in any capacity. You should never blindly copy and paste code from the internet that you do not fully understand.
 That being said, I'm making some assumptions of your preparation and this readme is in no way a complete guide in how to get all this off of the ground.***
 
-# Octopus Information
+## Octopus Information
 Your API KEY is found here on [Octopus' Website](https://octopus.energy/dashboard/new/accounts/personal-details/api-access).
 Your Octopus Account number is a code like A-ABCD1234
 When figuring out your product and tariff codes, remember that they _are different_ and when you summon your account details first with:
@@ -35,7 +35,7 @@ In my case "E-1R-GO-VAR-BB-23-02-07-D"
 You can use, again, Guy Lipman's [web tool for requesting your account data](https://www.guylipman.com/octopus/generic.html), if you're unfamiliar with curl requests. 
 Paste the output on the page into a code prettifier like [this one](https://jsonbeautifier.org/) to make it a little more human readable.
 
-# Creating the SQL Table
+## Creating the SQL Table
 ### Step 1
 First navigate to [http://x.x.x.x/phpmyadmin/index.php?route=/server/databases&server=1](http://x.x.x.x/phpmyadmin/index.php?route=/server/databases&server=1)
 and under "Create Database", type "octopus" and click "create".
@@ -45,6 +45,8 @@ and under "Create Database", type "octopus" and click "create".
 ### Step 2
 Navigate to [http://x.x.x.x/phpmyadmin/index.php?route=/database/structure&db=octopus](http://x.x.x.x/phpmyadmin/index.php?route=/database/structure&db=octopus)
 And create a table called "electricity" with 14 columns
+![Screenshot 2023-11-07 132655](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/2f515d1f-9935-4de9-ac6b-442278da7e9b)
+
 
 ### Step 3
 Create the columns with the exact column names as shown, or if you're feeling a little more advanced, use the sql syntax below.
