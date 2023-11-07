@@ -9,7 +9,7 @@ From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-gra
 Please see the [Releases](https://github.com/milkandbourbons/octopus-energy-sql/releases) page for the latest version. Each version has a grafana JSON file too as the graphs develop.
 Inspiration for the project was found reading [Octopus' Blog](https://octopus.energy/blog/agile-smart-home-diy/).
 
-## 3rd Party Software used:
+## 3rd Party Software
 As well as a place to run the Python script (Raspberry Pi or Home Server or "Linode" are popular options), you will also need access to these free bits of software:
 - Basic webserver for accessing the below
 - SQL Server / Database. My usecase is [phpmyadmin](https://www.phpmyadmin.net/) which is a lighweight and simple to use PHP based front end for interracting with your database
@@ -44,7 +44,8 @@ and under "Create Database", type "octopus" and click "create".
 
 ### Step 2
 Navigate to [http://x.x.x.x/phpmyadmin/index.php?route=/database/structure&db=octopus](http://x.x.x.x/phpmyadmin/index.php?route=/database/structure&db=octopus)
-And create a table called "electricity" with 14 columns
+And create a table called "electricity" with 14 columns.
+
 ![Screenshot 2023-11-07 132655](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/2f515d1f-9935-4de9-ac6b-442278da7e9b)
 
 
