@@ -47,7 +47,7 @@ CREATE TABLE electricity (
     kwh float,
     high_price float,
     low_price float,
-    current_price float,
+    current_price float NULL,
     standing_charge float,
     start_time datetime,
     end_time datetime,
