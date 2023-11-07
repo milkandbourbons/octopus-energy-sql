@@ -23,7 +23,7 @@ cheap_rate_stop_time =   "05:30"
 sql_host_address =       "IP ADDRESS OR FQDN"
 sql_user =               "SQL USERNAME"
 sql_password =           "SQL PASSWORD"
-sql_database =           "SQL DATABASE NAME"
+sql_database =           "octopus"
 schedule_time =          "07:30" #the time for the script to grab fresh data from octopus - they only update once per 24hrs, after midnight.
 
 #electricity config
