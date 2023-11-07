@@ -6,6 +6,7 @@ From there I'm using [Grafana](https://grafana.com/docs/grafana/latest/setup-gra
 ![Screenshot 2023-11-07 110212](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/0f17c430-3cb8-4cbe-92a3-f225267fe566)
 <sup>some data is missing from the screen shot on the previous month becuase I only joined Octopus in october 2023</sup>
 ## Getting started
+Please see the [Releases](https://github.com/milkandbourbons/octopus-energy-sql/releases) page for the latest version. Each version has a grafana JSON file too as the graphs develop.
 Inspiration for the project was found reading [Octopus' Blog](https://octopus.energy/blog/agile-smart-home-diy/).
 
 ## 3rd Party Software used:
