@@ -41,11 +41,11 @@ and under "Create Database", type "octopus" and click "create".
 
 ![Screenshot 2023-11-07 132504](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/1f81e26c-6854-44e1-acda-fc1eda45c2aa)
 
-###Step 2
+### Step 2
 Navigate to [http://x.x.x.x/phpmyadmin/index.php?route=/database/structure&db=octopus](http://x.x.x.x/phpmyadmin/index.php?route=/database/structure&db=octopus)
 And create a table called "electricity" with 14 columns
 
-###Step 3
+### Step 3
 Create the columns with the exact column names as shown, or if you're feeling a little more advanced, use the sql syntax below.
 ![Screenshot 2023-11-07 133315](https://github.com/milkandbourbons/octopus-energy-sql/assets/47081499/9a8fc1aa-9233-47df-be29-270aff1cb881)
 >Hint, to enable "auto increment" on the id column, its the tickbox labelled "A_I", as you hover over it, a tooltip is displayed confirming "AutoIncrement"
@@ -56,7 +56,7 @@ Enter:
 ``` sql
 CREATE DATABASE octopus;
 ```
-###Step Advanced 2
+### Step Advanced 2
 At [http://x.x.x.x/phpmyadmin/index.php?route=/server/sql&db=octopus](http://x.x.x.x/phpmyadmin/index.php?route=/server/sql&db=octopus)
 Enter:
 ``` sql
