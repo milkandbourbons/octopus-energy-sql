@@ -94,6 +94,7 @@ CREATE TABLE gas (
     id int NOT NULL AUTO_INCREMENT,
     gas_kwh float NULL,
     start_time datetime NULL,
+    end_time datetime NULL,
     standing_charge float NULL,
     cost float NULL,
     
