@@ -1,0 +1,2492 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 1,
+    "id": 11,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 0,
+          "y": 0
+        },
+        "id": 18,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT bump_charge_cost, start_time FROM octopus.electricity ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "bump_charge_cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [],
+                "id": "8899bbab-89ab-4cde-b012-318b8c5951a9",
+                "type": "group"
+              }
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Bump Charge Cost Total",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 2,
+          "y": 0
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT cost, end_time FROM octopus.electricity WHERE end_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000' ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "889b8bb8-0123-4456-b89a-b18b8d18775b",
+                    "properties": {
+                      "field": "end_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-11-01 00:00:00",
+                        "2023-11-30 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        "value"
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "8899bbab-89ab-4cde-b012-318b8c5951a9",
+                "type": "group"
+              },
+              "whereString": "end_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000'"
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Elec Cost November",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 1,
+          "x": 4,
+          "y": 0
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT cost, end_time FROM octopus.electricity WHERE end_time BETWEEN '2023-10-01 00:00:00.000' AND '2023-10-31 00:00:00.000' ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "889b8bb8-0123-4456-b89a-b18b8d18775b",
+                    "properties": {
+                      "field": "end_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-10-01 00:00:00",
+                        "2023-10-31 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        "value"
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "8899bbab-89ab-4cde-b012-318b8c5951a9",
+                "type": "group"
+              },
+              "whereString": "end_time BETWEEN '2023-10-01 00:00:00.000' AND '2023-10-31 00:00:00.000'"
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Cost Oct 2023",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "continuous-BlPu",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "right",
+              "barAlignment": 1,
+              "drawStyle": "line",
+              "fillOpacity": 60,
+              "gradientMode": "scheme",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "stepAfter",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 2,
+            "displayName": "Cost",
+            "fieldMinMax": true,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Cost"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#30efff",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 7,
+          "x": 5,
+          "y": 0
+        },
+        "hideTimeOverride": false,
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezone": [
+            "browser"
+          ],
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT cost, end_time FROM octopus.electricity ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ]
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Elec Cost",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "gas_cost"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Gas Cost"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "SUM(cost)"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Elec Cost"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "math"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Grand Total"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 24,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT SUM(cost) AS \"gas_cost\" FROM octopus.gas ",
+            "refId": "gas_cost",
+            "sql": {
+              "columns": [
+                {
+                  "alias": "\"gas_cost\"",
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ]
+            },
+            "table": "gas"
+          },
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "hide": false,
+            "rawSql": "SELECT SUM(cost) FROM octopus.electricity ",
+            "refId": "elec_cost",
+            "sql": {
+              "columns": [
+                {
+                  "name": "SUM",
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": []
+            },
+            "table": "electricity"
+          },
+          {
+            "datasource": {
+              "name": "Expression",
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "$gas_cost+$elec_cost",
+            "hide": false,
+            "refId": "math",
+            "type": "math"
+          },
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "hide": false,
+            "rawSql": "SELECT end_time FROM octopus.electricity WHERE end_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000' LIMIT 50 ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50,
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "babab989-0123-4456-b89a-b18bae5eebe6",
+                    "properties": {
+                      "field": "end_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-11-01 00:00:00",
+                        "2023-11-30 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        null
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "b99aab98-89ab-4cde-b012-318bae3d58dc",
+                "type": "group"
+              },
+              "whereString": "end_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000'"
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Totals",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 0,
+          "y": 3
+        },
+        "id": 17,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT car_charge_cost, start_time, bump_charge_cost FROM octopus.electricity ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "car_charge_cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "bump_charge_cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [],
+                "id": "8899bbab-89ab-4cde-b012-318b8c5951a9",
+                "type": "group"
+              }
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Total Car Charge Cost",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "All Charging",
+              "binary": {
+                "left": "car_charge_cost",
+                "operator": "+",
+                "right": "bump_charge_cost"
+              },
+              "mode": "binary",
+              "reduce": {
+                "include": [
+                  "car_charge_cost",
+                  "bump_charge_cost"
+                ],
+                "reducer": "sum"
+              },
+              "replaceFields": true
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 2,
+          "y": 3
+        },
+        "id": 14,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "vertical",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "titleSize": 15,
+            "valueSize": 37
+          },
+          "textMode": "value_and_name"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT car_charge_cost, start_time, bump_charge_cost FROM octopus.electricity WHERE end_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000' ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "car_charge_cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "bump_charge_cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "8ba89a8a-0123-4456-b89a-b18b94a4f3d6",
+                    "properties": {
+                      "field": "end_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-11-01 00:00:00",
+                        "2023-11-30 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        null
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "8899bbab-89ab-4cde-b012-318b8c5951a9",
+                "type": "group"
+              },
+              "whereString": "end_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000'"
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Nov Charge Costs",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 12,
+          "y": 4
+        },
+        "id": 23,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT cost, end_time FROM octopus.gas WHERE start_time BETWEEN '2023-10-01 00:00:00.000' AND '2023-10-31 00:00:00.000' ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "a89bbb89-cdef-4012-b456-718bab1c1b40",
+                    "properties": {
+                      "field": "start_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-10-01 00:00:00",
+                        "2023-10-31 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        null
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "9a88999b-89ab-4cde-b012-318baaf7e649",
+                "type": "group"
+              },
+              "whereString": "start_time BETWEEN '2023-10-01 00:00:00.000' AND '2023-10-31 00:00:00.000'"
+            },
+            "table": "gas"
+          }
+        ],
+        "title": "Gas Cost October",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 14,
+          "y": 4
+        },
+        "id": 20,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT cost, end_time FROM octopus.gas WHERE start_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000' ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "a89bbb89-cdef-4012-b456-718bab1c1b40",
+                    "properties": {
+                      "field": "start_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-11-01 00:00:00",
+                        "2023-11-30 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        null
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "9a88999b-89ab-4cde-b012-318baaf7e649",
+                "type": "group"
+              },
+              "whereString": "start_time BETWEEN '2023-11-01 00:00:00.000' AND '2023-11-30 00:00:00.000'"
+            },
+            "table": "gas"
+          }
+        ],
+        "title": "Gas Cost November",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "continuous-BlYlRd",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "right",
+              "barAlignment": 1,
+              "drawStyle": "line",
+              "fillOpacity": 73,
+              "gradientMode": "scheme",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "stepAfter",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 2,
+            "displayName": "Cost",
+            "fieldMinMax": true,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 8,
+          "x": 16,
+          "y": 4
+        },
+        "hideTimeOverride": false,
+        "id": 19,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezone": [
+            "browser"
+          ],
+          "tooltip": {
+            "mode": "multi",
+            "sort": "asc"
+          }
+        },
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT cost, start_time FROM octopus.gas ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ]
+            },
+            "table": "gas"
+          }
+        ],
+        "title": "Gas Cost",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 3,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 1,
+          "x": 0,
+          "y": 6
+        },
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT low_price FROM octopus.electricity LIMIT 50 ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "low_price",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Low Rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 3,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 1,
+          "x": 1,
+          "y": 6
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT high_price FROM octopus.electricity LIMIT 50 ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "high_price",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "limit": 50
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "High Rate",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 2,
+          "y": 6
+        },
+        "id": 16,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT standing_charge, start_time FROM octopus.electricity ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "standing_charge",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [],
+                "id": "8899bbab-89ab-4cde-b012-318b8c5951a9",
+                "type": "group"
+              }
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "Standing Charge Total",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 2,
+          "x": 14,
+          "y": 7
+        },
+        "id": 21,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "value"
+        },
+        "pluginVersion": "10.2.0",
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawSql": "SELECT standing_charge, end_time FROM octopus.gas ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "standing_charge",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [],
+                "id": "9a88999b-89ab-4cde-b012-318baaf7e649",
+                "type": "group"
+              }
+            },
+            "table": "gas"
+          }
+        ],
+        "title": "Gas Standing Chrg Total",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "continuous-GrYlRd",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "right",
+              "barAlignment": 1,
+              "drawStyle": "line",
+              "fillOpacity": 58,
+              "gradientMode": "scheme",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 3,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 2,
+            "displayName": "Cost",
+            "fieldMinMax": true,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyGBP"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 5,
+          "x": 0,
+          "y": 8
+        },
+        "hideTimeOverride": true,
+        "id": 1,
+        "interval": "1d",
+        "options": {
+          "legend": {
+            "calcs": [
+              "sum"
+            ],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezone": [
+            "browser"
+          ],
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT cost, start_time FROM octopus.electricity WHERE end_time BETWEEN '2023-10-01 00:00:00.000' AND '2023-10-31 00:00:00.000' ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "cost",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ],
+              "whereJsonTree": {
+                "children1": [
+                  {
+                    "id": "b9999b88-89ab-4cde-b012-318b8f277568",
+                    "properties": {
+                      "field": "end_time",
+                      "fieldSrc": "field",
+                      "operator": "between",
+                      "value": [
+                        "2023-10-01 00:00:00",
+                        "2023-10-31 00:00:00"
+                      ],
+                      "valueSrc": [
+                        "value",
+                        null
+                      ],
+                      "valueType": [
+                        "datetime",
+                        "datetime"
+                      ]
+                    },
+                    "type": "rule"
+                  }
+                ],
+                "id": "ab9988b8-89ab-4cde-b012-318b8f2357d6",
+                "type": "group"
+              },
+              "whereString": "end_time BETWEEN '2023-10-01 00:00:00.000' AND '2023-10-31 00:00:00.000'"
+            },
+            "table": "electricity"
+          }
+        ],
+        "timeFrom": "now-1M/M",
+        "timeShift": "1M/M",
+        "title": "Cost, Last Month",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "continuous-BlPu",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "right",
+              "barAlignment": 1,
+              "drawStyle": "line",
+              "fillOpacity": 54,
+              "gradientMode": "hue",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "stepBefore",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "dashed"
+              }
+            },
+            "displayName": "kWh",
+            "fieldMinMax": true,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "threshold"
+              },
+              "properties": [
+                {
+                  "id": "custom.fillOpacity",
+                  "value": 0
+                },
+                {
+                  "id": "displayName",
+                  "value": "Car Charging Threshold"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "current_price"
+              },
+              "properties": [
+                {
+                  "id": "custom.axisPlacement",
+                  "value": "left"
+                },
+                {
+                  "id": "unit",
+                  "value": "currencyGBP"
+                },
+                {
+                  "id": "decimals",
+                  "value": 2
+                },
+                {
+                  "id": "custom.fillOpacity",
+                  "value": 1
+                },
+                {
+                  "id": "custom.axisColorMode",
+                  "value": "series"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "continuous-GrYlRd",
+                    "seriesBy": "max"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Unit Price"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 7,
+          "x": 5,
+          "y": 10
+        },
+        "hideTimeOverride": false,
+        "id": 15,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezone": [
+            "browser"
+          ],
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT kwh, end_time, threshold, current_price FROM octopus.electricity ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "kwh",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "end_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "threshold",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "current_price",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": []
+            },
+            "table": "electricity"
+          }
+        ],
+        "title": "kWh Used",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-green",
+              "mode": "continuous-GrYlRd",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "right",
+              "barAlignment": 1,
+              "drawStyle": "line",
+              "fillOpacity": 58,
+              "gradientMode": "scheme",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 3,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "linearThreshold": 0,
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 2,
+            "displayName": "kWh",
+            "fieldMinMax": true,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 5,
+          "x": 0,
+          "y": 14
+        },
+        "hideTimeOverride": true,
+        "id": 7,
+        "interval": "1d",
+        "options": {
+          "legend": {
+            "calcs": [
+              "sum"
+            ],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezone": [
+            "browser"
+          ],
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT kwh, start_time FROM octopus.electricity ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "kwh",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ]
+            },
+            "table": "electricity"
+          }
+        ],
+        "timeFrom": "now-1M/M",
+        "timeShift": "1M/M",
+        "title": "kWh Last Month",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "mysql",
+          "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "continuous-GrYlRd",
+              "seriesBy": "last"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "right",
+              "barAlignment": 1,
+              "drawStyle": "line",
+              "fillOpacity": 73,
+              "gradientMode": "scheme",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "stepAfter",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 2,
+            "displayName": "Gas kWh",
+            "fieldMinMax": true,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 14
+        },
+        "hideTimeOverride": false,
+        "id": 22,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezone": [
+            "browser"
+          ],
+          "tooltip": {
+            "mode": "multi",
+            "sort": "asc"
+          }
+        },
+        "targets": [
+          {
+            "dataset": "octopus",
+            "datasource": {
+              "type": "mysql",
+              "uid": "aaa59c88-6165-47ce-b99d-64fee69ca1a2"
+            },
+            "editorMode": "builder",
+            "format": "table",
+            "rawQuery": true,
+            "rawSql": "SELECT gas_kwh, start_time FROM octopus.gas ",
+            "refId": "A",
+            "sql": {
+              "columns": [
+                {
+                  "parameters": [
+                    {
+                      "name": "gas_kwh",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                },
+                {
+                  "parameters": [
+                    {
+                      "name": "start_time",
+                      "type": "functionParameter"
+                    }
+                  ],
+                  "type": "function"
+                }
+              ],
+              "groupBy": [
+                {
+                  "property": {
+                    "type": "string"
+                  },
+                  "type": "groupBy"
+                }
+              ]
+            },
+            "table": "gas"
+          }
+        ],
+        "title": "Gas Consumption",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-14d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Electrickery",
+    "uid": "d7b9b8e3-8e00-4952-bfd4-1a914fad1252",
+    "version": 27,
+    "weekStart": ""
+  }
