@@ -97,6 +97,7 @@ CREATE TABLE gas (
     end_time datetime NULL,
     standing_charge float NULL,
     cost float NULL,
+    gas_price NULL,
     
     PRIMARY KEY (id)
 );
